@@ -3,23 +3,23 @@ import uuid from 'uuid/v1';
 
 const debug = debugFactory('smart-request-balancer');
 
-type Rule = {
+export type Rule = {
   rate: number;
   limit: number;
   priority: number;
 };
 
-type RetryFunction = (delay?: number) => void;
-type QueueRequest = (RetryFunction: RetryFunction) => Promise<any>;
-type Callback = (error: Error | null, data?: any) => void;
+export type RetryFunction = (delay?: number) => void;
+export type QueueRequest = (RetryFunction: RetryFunction) => Promise<any>;
+export type Callback = (error: Error | null, data?: any) => void;
 
-type QueueItemData = {
+export type QueueItemData = {
   id: string;
   request: QueueRequest;
   callback: Callback;
 };
 
-type QueueItem = {
+export type QueueItem = {
   id: string;
   cooldown: number;
   key: string;
@@ -33,7 +33,7 @@ type ShiftItemStructure = {
   item: QueueItemData;
 };
 
-type QueueConfig = {
+export type QueueConfig = {
   rules: {
     [key: string]: Rule;
   };
@@ -69,7 +69,7 @@ const defaultParams = {
   ignoreOverallOverheat: true
 };
 
-class SmartQueue {
+export class SmartQueue {
   private params: QueueConfig;
   private queue: QueueMap = new Map();
   private overheat = Date.now();
@@ -350,5 +350,3 @@ class SmartQueue {
     this.queue.delete(key);
   }
 }
-
-export = SmartQueue;
