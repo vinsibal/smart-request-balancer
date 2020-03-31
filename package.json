@@ -1,6 +1,6 @@
 {
   "name": "smart-request-balancer-vv",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Smart request balancer with fine tuning of rates and limits of queue execution",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
